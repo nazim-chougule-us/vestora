@@ -65,8 +65,24 @@ export default function NotificationsPage() {
   if (loading) {
     return (
       <PageContainer>
-        <div className="flex items-center justify-center py-32">
-          <Loader2 className="h-8 w-8 animate-spin text-accent" />
+        <div className="mb-6 flex items-center justify-between">
+          <div>
+            <div className="skeleton-shimmer h-7 w-40 rounded-lg" />
+            <div className="skeleton-shimmer mt-2 h-4 w-64 rounded-lg" />
+          </div>
+          <div className="skeleton-shimmer h-9 w-28 rounded-lg" />
+        </div>
+        <div className="space-y-2">
+          {[1, 2, 3, 4, 5].map((i) => (
+            <div key={i} className="glass-card flex items-start gap-3 p-4">
+              <div className="skeleton-shimmer h-8 w-8 shrink-0 rounded-lg" />
+              <div className="flex-1">
+                <div className="skeleton-shimmer h-4 w-48 rounded-lg" />
+                <div className="skeleton-shimmer mt-1.5 h-3 w-full rounded-lg" />
+                <div className="skeleton-shimmer mt-1.5 h-2.5 w-24 rounded-lg" />
+              </div>
+            </div>
+          ))}
         </div>
       </PageContainer>
     );

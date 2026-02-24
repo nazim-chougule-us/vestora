@@ -204,8 +204,22 @@ export default function AnalyticsPage() {
   if (loading) {
     return (
       <PageContainer>
-        <div className="flex items-center justify-center py-32">
-          <Loader2 className="h-8 w-8 animate-spin text-accent" />
+        <div className="mb-6">
+          <div className="skeleton-shimmer h-7 w-48 rounded-lg" />
+          <div className="skeleton-shimmer mt-2 h-4 w-64 rounded-lg" />
+        </div>
+        <div className="stagger-grid mb-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="animate-fade-in-up glass-card p-4">
+              <div className="skeleton-shimmer mb-2 h-8 w-8 rounded-lg" />
+              <div className="skeleton-shimmer h-7 w-12 rounded-lg" />
+              <div className="skeleton-shimmer mt-1 h-3 w-20 rounded-lg" />
+            </div>
+          ))}
+        </div>
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="glass-card p-5"><div className="skeleton-shimmer h-64 rounded-lg" /></div>
+          <div className="glass-card p-5"><div className="skeleton-shimmer h-64 rounded-lg" /></div>
         </div>
       </PageContainer>
     );

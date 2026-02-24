@@ -64,9 +64,9 @@ function ItemDetailModal({
   const detected = item.detected_items || [];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-bg-overlay p-4" onClick={onClose}>
+    <div className="animate-fade-in fixed inset-0 z-50 flex items-center justify-center bg-bg-overlay p-4" onClick={onClose}>
       <div
-        className="relative flex w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-2xl border border-border bg-bg-secondary shadow-lg"
+        className="animate-scale-in relative flex w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-2xl border border-border bg-bg-secondary shadow-lg"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -462,7 +462,7 @@ export default function WardrobePage() {
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="stagger-grid grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {items.map((item) => {
             const detected = item.detected_items || [];
             const label = detected.length > 0
@@ -473,7 +473,7 @@ export default function WardrobePage() {
               <div
                 key={item.id}
                 onClick={() => setSelectedItem(item)}
-                className="glass-card glass-card-hover group relative cursor-pointer overflow-hidden"
+                className="animate-fade-in-up glass-card glass-card-hover group relative cursor-pointer overflow-hidden"
               >
                 {/* Image */}
                 <div className="relative aspect-square bg-bg-tertiary">

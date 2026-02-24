@@ -93,6 +93,10 @@ async def generate_suggestions(
                 "You have access to web search to find the latest trending outfits and fashion. "
                 "Based on the user's requirements, suggest 4 complete outfit ideas that are "
                 "currently trending or highly recommended.\n\n"
+                "IMPORTANT: Pay close attention to the user's gender. If gender is 'male', "
+                "suggest ONLY menswear items (shirts, trousers, chinos, jackets, sneakers, etc.). "
+                "Do NOT suggest dresses, skirts, blouses, heels, or any traditionally feminine items for male users. "
+                "If gender is 'female', suggest women's fashion items accordingly.\n\n"
                 "For EACH outfit, provide:\n"
                 "- title: A catchy name for the outfit (e.g. 'Modern Minimalist Office')\n"
                 "- items: Array of 4-6 specific clothing item descriptions with brand suggestions "
@@ -141,10 +145,12 @@ async def generate_suggestions(
         """Generate an image for a single outfit, return S3 key or empty."""
         items_text = ", ".join(outfit.get("items", []))
         gender_desc = "male" if gender == "male" else "female" if gender == "female" else "fashion"
+        gender_clothing = "men's clothing only, masculine outfit" if gender == "male" else "women's clothing only, feminine outfit" if gender == "female" else "stylish outfit"
         prompt = (
-            f"A {gender_desc} fashion model wearing this complete outfit: {items_text}. "
+            f"A {gender_desc} fashion model wearing {gender_clothing}: {items_text}. "
             f"Full body portrait, head to toe, high quality fashion photography, "
-            f"clean white studio background, soft professional lighting."
+            f"clean white studio background, soft professional lighting. "
+            f"The outfit must be appropriate for a {gender_desc} person."
         )
         url = f"{settings.usinc_base_url}/images/generations"
         headers = {"x-api-key": settings.usinc_api_key, "Content-Type": "application/json"}

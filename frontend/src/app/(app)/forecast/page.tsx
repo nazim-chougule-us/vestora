@@ -42,8 +42,25 @@ export default function ForecastPage() {
   if (loading) {
     return (
       <PageContainer>
-        <div className="flex items-center justify-center py-32">
-          <Loader2 className="h-8 w-8 animate-spin text-accent" />
+        <div className="mb-6">
+          <div className="skeleton-shimmer h-7 w-48 rounded-lg" />
+          <div className="skeleton-shimmer mt-2 h-4 w-72 rounded-lg" />
+        </div>
+        <div className="glass-card mb-6 p-5">
+          <div className="skeleton-shimmer h-5 w-56 rounded-lg" />
+          <div className="skeleton-shimmer mt-2 h-12 w-full rounded-lg" />
+        </div>
+        <div className="grid gap-6 lg:grid-cols-2">
+          {[1, 2].map((i) => (
+            <div key={i} className="glass-card p-5">
+              <div className="skeleton-shimmer mb-3 h-4 w-40 rounded-lg" />
+              <div className="space-y-3">
+                {[1, 2, 3].map((j) => (
+                  <div key={j} className="skeleton-shimmer h-20 rounded-lg" />
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </PageContainer>
     );

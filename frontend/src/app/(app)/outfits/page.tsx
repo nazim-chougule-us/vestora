@@ -210,13 +210,13 @@ export default function OutfitsPage() {
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="stagger-grid grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {outfits.map((outfit) => {
             const itemImages = outfit.items.filter((i) => i.image_url);
             return (
               <div
                 key={outfit.id}
-                className="glass-card glass-card-hover group cursor-pointer overflow-hidden"
+                className="animate-fade-in-up glass-card glass-card-hover group cursor-pointer overflow-hidden"
                 onClick={() => { setSelectedOutfit(outfit); loadExistingFeedback(outfit.id); }}
               >
                 <div className="relative aspect-square bg-bg-tertiary">
@@ -267,9 +267,9 @@ export default function OutfitsPage() {
 
       {/* Outfit detail modal with backdrop */}
       {selectedOutfit && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-bg-overlay p-4" onClick={() => setSelectedOutfit(null)}>
+        <div className="animate-fade-in fixed inset-0 z-50 flex items-center justify-center bg-bg-overlay p-4" onClick={() => setSelectedOutfit(null)}>
           <div
-            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-border bg-bg-secondary shadow-lg"
+            className="animate-scale-in relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-border bg-bg-secondary shadow-lg"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}

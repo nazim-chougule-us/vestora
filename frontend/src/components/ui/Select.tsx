@@ -63,7 +63,7 @@ export function Select({ value, onChange, options, icon: Icon, placeholder, clas
 
       {/* Dropdown */}
       {open && (
-        <div className="absolute left-0 top-full z-50 mt-1 min-w-full overflow-hidden rounded-lg border border-border bg-bg-secondary shadow-lg">
+        <div className="animate-slide-down absolute left-0 top-full z-50 mt-1 min-w-full overflow-hidden rounded-lg border border-border bg-bg-secondary shadow-lg">
           <div className="max-h-60 overflow-y-auto py-1">
             {options.map((opt) => {
               const isActive = opt.value === value;

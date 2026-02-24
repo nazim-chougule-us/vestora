@@ -24,6 +24,7 @@ import {
   Eye,
 } from "lucide-react";
 import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
+import { Select } from "@/components/ui/Select";
 
 const OCCASIONS = [
   "Casual Everyday",
@@ -198,39 +199,30 @@ export default function SuggestionsPage() {
         <div className="grid gap-3 sm:grid-cols-3">
           <div>
             <label className="mb-1.5 block text-xs font-medium text-text-secondary">Style</label>
-            <select
+            <Select
               value={style}
-              onChange={(e) => setStyle(e.target.value)}
-              className="w-full rounded-lg border border-border bg-bg-input px-3 py-2 text-sm text-text-primary focus:border-border-accent focus:outline-none"
-            >
-              {STYLES.map((s) => (
-                <option key={s.value} value={s.value}>{s.label}</option>
-              ))}
-            </select>
+              onChange={setStyle}
+              placeholder="Any Style"
+              options={STYLES}
+            />
           </div>
           <div>
             <label className="mb-1.5 block text-xs font-medium text-text-secondary">Budget</label>
-            <select
+            <Select
               value={budget}
-              onChange={(e) => setBudget(e.target.value)}
-              className="w-full rounded-lg border border-border bg-bg-input px-3 py-2 text-sm text-text-primary focus:border-border-accent focus:outline-none"
-            >
-              {BUDGETS.map((b) => (
-                <option key={b.value} value={b.value}>{b.label}</option>
-              ))}
-            </select>
+              onChange={setBudget}
+              placeholder="Any Budget"
+              options={BUDGETS}
+            />
           </div>
           <div>
             <label className="mb-1.5 block text-xs font-medium text-text-secondary">Season</label>
-            <select
+            <Select
               value={season}
-              onChange={(e) => setSeason(e.target.value)}
-              className="w-full rounded-lg border border-border bg-bg-input px-3 py-2 text-sm text-text-primary focus:border-border-accent focus:outline-none"
-            >
-              {SEASONS.map((s) => (
-                <option key={s.value} value={s.value}>{s.label}</option>
-              ))}
-            </select>
+              onChange={setSeason}
+              placeholder="Any Season"
+              options={SEASONS}
+            />
           </div>
         </div>
 
@@ -285,14 +277,14 @@ export default function SuggestionsPage() {
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="stagger-grid grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {suggestions.map((s) => {
             const firstImage = s.outfits.find((o) => o.image_url)?.image_url;
             return (
               <div
                 key={s.id}
                 onClick={() => setSelected(s)}
-                className="glass-card glass-card-hover group cursor-pointer overflow-hidden"
+                className="animate-fade-in-up glass-card glass-card-hover group cursor-pointer overflow-hidden"
               >
                 <div className="relative aspect-square bg-bg-tertiary">
                   {firstImage ? (
@@ -329,9 +321,9 @@ export default function SuggestionsPage() {
 
       {/* Detail modal */}
       {selected && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4" onClick={() => setSelected(null)}>
+        <div className="animate-fade-in fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4" onClick={() => setSelected(null)}>
           <div
-            className="relative flex flex-col w-full max-w-3xl max-h-[95vh] overflow-hidden rounded-2xl border border-border bg-bg-secondary shadow-2xl"
+            className="animate-scale-in relative flex flex-col w-full max-w-3xl max-h-[95vh] overflow-hidden rounded-2xl border border-border bg-bg-secondary shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Fixed header */}

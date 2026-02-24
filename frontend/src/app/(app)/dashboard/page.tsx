@@ -94,11 +94,11 @@ export default function DashboardPage() {
       </div>
 
       {/* Stats grid */}
-      <div className="mb-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <div className="stagger-grid mb-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
         {statCards.map((s) => {
           const Icon = s.icon;
           return (
-            <div key={s.label} className="glass-card glass-card-hover p-4">
+            <div key={s.label} className="animate-fade-in-up glass-card glass-card-hover p-4">
               <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-lg bg-accent-muted">
                 <Icon className="h-4 w-4 text-accent" />
               </div>
@@ -112,14 +112,14 @@ export default function DashboardPage() {
       {/* Quick actions */}
       <div className="mb-8">
         <h2 className="mb-4 text-lg font-semibold text-text-primary">Quick Actions</h2>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="stagger-grid grid grid-cols-2 gap-3 sm:grid-cols-4">
           {quickActions.map((a) => {
             const Icon = a.icon;
             return (
               <a
                 key={a.label}
                 href={a.href}
-                className="glass-card glass-card-hover group flex flex-col items-center gap-3 p-5 text-center"
+                className="animate-fade-in-up glass-card glass-card-hover group flex flex-col items-center gap-3 p-5 text-center"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-bg-tertiary">
                   <Icon className={`h-6 w-6 ${a.color}`} />

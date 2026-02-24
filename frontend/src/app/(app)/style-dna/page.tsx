@@ -75,8 +75,28 @@ export default function StyleDnaPage() {
   if (loading) {
     return (
       <PageContainer>
-        <div className="flex items-center justify-center py-32">
-          <Loader2 className="h-8 w-8 animate-spin text-accent" />
+        <div className="mb-6 flex items-center justify-between">
+          <div>
+            <div className="skeleton-shimmer h-7 w-36 rounded-lg" />
+            <div className="skeleton-shimmer mt-2 h-4 w-52 rounded-lg" />
+          </div>
+          <div className="skeleton-shimmer h-10 w-40 rounded-lg" />
+        </div>
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="glass-card p-6">
+            <div className="skeleton-shimmer mb-2 h-3 w-28 rounded-lg" />
+            <div className="skeleton-shimmer mb-3 h-8 w-48 rounded-lg" />
+            <div className="skeleton-shimmer h-16 w-full rounded-lg" />
+            <div className="mt-4 flex gap-2">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="skeleton-shimmer h-7 w-20 rounded-full" />
+              ))}
+            </div>
+          </div>
+          <div className="glass-card p-5">
+            <div className="skeleton-shimmer mb-3 h-4 w-32 rounded-lg" />
+            <div className="skeleton-shimmer h-64 rounded-lg" />
+          </div>
         </div>
       </PageContainer>
     );

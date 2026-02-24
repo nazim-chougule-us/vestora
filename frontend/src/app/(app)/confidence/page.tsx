@@ -74,8 +74,27 @@ export default function ConfidencePage() {
   if (loading) {
     return (
       <PageContainer>
-        <div className="flex items-center justify-center py-32">
-          <Loader2 className="h-8 w-8 animate-spin text-accent" />
+        <div className="mb-6">
+          <div className="skeleton-shimmer h-7 w-52 rounded-lg" />
+          <div className="skeleton-shimmer mt-2 h-4 w-72 rounded-lg" />
+        </div>
+        <div className="stagger-grid mb-6 grid grid-cols-3 gap-4">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="animate-fade-in-up glass-card p-4 text-center">
+              <div className="skeleton-shimmer mx-auto h-8 w-12 rounded-lg" />
+              <div className="skeleton-shimmer mx-auto mt-1 h-3 w-20 rounded-lg" />
+            </div>
+          ))}
+        </div>
+        <div className="glass-card mb-6 p-5">
+          <div className="skeleton-shimmer h-4 w-32 rounded-lg" />
+          <div className="skeleton-shimmer mt-3 h-10 w-full rounded-lg" />
+          <div className="skeleton-shimmer mt-3 h-10 w-full rounded-lg" />
+        </div>
+        <div className="space-y-3">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="skeleton-shimmer h-24 rounded-xl" />
+          ))}
         </div>
       </PageContainer>
     );

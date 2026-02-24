@@ -27,11 +27,11 @@ export function ConfirmDialog({
 
   return (
     <div
-      className="fixed inset-0 z-60 flex items-center justify-center bg-bg-overlay p-4"
+      className="animate-fade-in fixed inset-0 z-60 flex items-center justify-center bg-bg-overlay p-4"
       onClick={onCancel}
     >
       <div
-        className="w-full max-w-sm rounded-xl border border-border bg-bg-secondary p-5 shadow-lg"
+        className="animate-scale-in w-full max-w-sm rounded-xl border border-border bg-bg-secondary p-5 shadow-lg"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-4 flex items-start gap-3">

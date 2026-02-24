@@ -88,8 +88,20 @@ export default function SocialPage() {
       </div>
 
       {loading ? (
-        <div className="flex items-center justify-center py-20">
-          <Loader2 className="h-8 w-8 animate-spin text-accent" />
+        <div className="stagger-grid grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="animate-fade-in-up glass-card overflow-hidden">
+              <div className="skeleton-shimmer aspect-square" />
+              <div className="p-3">
+                <div className="mb-1 flex items-center justify-between">
+                  <div className="skeleton-shimmer h-3 w-20 rounded-lg" />
+                  <div className="skeleton-shimmer h-3 w-16 rounded-lg" />
+                </div>
+                <div className="skeleton-shimmer mt-2 h-3 w-full rounded-lg" />
+                <div className="skeleton-shimmer mt-2 h-7 w-16 rounded-lg" />
+              </div>
+            </div>
+          ))}
         </div>
       ) : tab === "feed" ? (
         posts.length === 0 ? (
@@ -100,9 +112,9 @@ export default function SocialPage() {
             <p className="text-text-secondary">No posts yet. Share your outfits and style with the community!</p>
           </div>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="stagger-grid grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => (
-              <div key={post.id} className="glass-card glass-card-hover overflow-hidden">
+              <div key={post.id} className="animate-fade-in-up glass-card glass-card-hover overflow-hidden">
                 <div className="relative aspect-square bg-bg-tertiary">
                   {post.image_url ? (
                     <img src={post.image_url} alt={post.caption} className="h-full w-full object-cover" />
